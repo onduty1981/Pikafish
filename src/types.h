@@ -290,14 +290,13 @@ enum Value : int {
 
   VALUE_MATE_IN_MAX_PLY  =  VALUE_MATE - MAX_PLY,
   VALUE_MATED_IN_MAX_PLY = -VALUE_MATE_IN_MAX_PLY,
-
-  RookValueMg    = 1297,  RookValueEg    = 1639,
-  AdvisorValueMg = 220 ,  AdvisorValueEg = 175 ,
-  CannonValueMg  = 646 ,  CannonValueEg  = 643 ,
-  PawnValueMg    = 104 ,  PawnValueEg    = 144 ,
-  KnightValueMg  = 704 ,  KnightValueEg  = 741 ,
-  BishopValueMg  = 262 ,  BishopValueEg  = 237 ,
 };
+inline Value RookValueMg    = Value(1297), RookValueEg    = Value(1639);
+inline Value AdvisorValueMg = Value(220 ), AdvisorValueEg = Value(175 );
+inline Value CannonValueMg  = Value(646 ), CannonValueEg  = Value(643 );
+inline Value PawnValueMg    = Value(104 ), PawnValueEg    = Value(144 );
+inline Value KnightValueMg  = Value(704 ), KnightValueEg  = Value(741 );
+inline Value BishopValueMg  = Value(262 ), BishopValueEg  = Value(237 );
 
 enum PieceType {
   NO_PIECE_TYPE, ROOK, ADVISOR, CANNON, PAWN, KNIGHT, BISHOP, KING, KNIGHT_TO,
@@ -312,7 +311,7 @@ enum Piece {
   PIECE_NB
 };
 
-constexpr Value PieceValue[PHASE_NB][PIECE_NB] = {
+inline Value PieceValue[PHASE_NB][PIECE_NB] = {
   { VALUE_ZERO, RookValueMg, AdvisorValueMg, CannonValueMg, PawnValueMg, KnightValueMg, BishopValueMg, VALUE_ZERO,
     VALUE_ZERO, RookValueMg, AdvisorValueMg, CannonValueMg, PawnValueMg, KnightValueMg, BishopValueMg, VALUE_ZERO },
   { VALUE_ZERO, RookValueEg, AdvisorValueEg, CannonValueEg, PawnValueEg, KnightValueEg, BishopValueEg, VALUE_ZERO,

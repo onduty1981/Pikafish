@@ -23,6 +23,26 @@
 
 using namespace Stockfish;
 
+void post_update() {
+  auto _update = [&] (Value mg, Value eg, PieceType pt) {
+    PieceValue[MG][make_piece(WHITE, pt)] = PieceValue[MG][make_piece(BLACK, pt)] = mg;
+    PieceValue[EG][make_piece(WHITE, pt)] = PieceValue[EG][make_piece(BLACK, pt)] = eg;
+  };
+  _update(RookValueMg   , RookValueEg   , ROOK);
+  _update(AdvisorValueMg, AdvisorValueEg, ADVISOR);
+  _update(CannonValueMg , CannonValueEg , CANNON);
+  _update(PawnValueMg   , PawnValueEg   , PAWN);
+  _update(KnightValueMg , KnightValueEg , KNIGHT);
+  _update(BishopValueMg , BishopValueEg , BISHOP);
+}
+
+TUNE(RookValueMg   , RookValueEg   ,
+     AdvisorValueMg, AdvisorValueEg,
+     CannonValueMg , CannonValueEg ,
+     PawnValueMg   , PawnValueEg   ,
+     KnightValueMg , KnightValueEg ,
+     BishopValueMg , BishopValueEg , post_update);
+
 int main(int argc, char* argv[]) {
 
   std::cout << engine_info() << std::endl;
